@@ -60,7 +60,8 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Na 785 nós não só lavamos o seu carro, mas cuidamos dele! 🚗💎</h3>
+                    <h3>Na 785 nós não só lavamos o seu carro, mas cuidamos dele!</h3>
+                    <br>
                     <p>Especialistas em higienização automotiva completa, oferecemos serviços premium que vão além da limpeza convencional. Nosso diferencial está nos detalhes:</p>
                     <ul class="about-features">
                         <li><i class="fas fa-check-circle"></i> Atendimento personalizado</li>
@@ -191,32 +192,6 @@
         </div>
     </section>
 
-<script>
-function agendarServico(event, element) {
-    event.preventDefault();
-    
-    // Coletar dados do card
-    const serviceCard = element.closest('.service-card');
-    const serviceName = serviceCard.dataset.serviceName;
-    const servicePrice = serviceCard.dataset.servicePrice;
-    const features = Array.from(serviceCard.querySelectorAll('.service-features li'))
-                         .map(li => li.textContent.trim().replace(/\s+/g, ' '));
-
-    // Montar mensagem
-    let message = `Olá, gostaria de agendar a *${serviceName}* 💦\n`;
-    message += `Valor: *R$ ${servicePrice}*\n\n`;
-    message += `_Serviços inclusos:_\n`;
-    message += features.map(feature => `✓ ${feature}`).join('\n');
-    message += `\n\nPor favor, confirmar disponibilidade. 🕒`;
-
-    // Codificar para URL
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://api.whatsapp.com/send?phone=5515988254615&text=${encodedMessage}`;
-    
-    // Abrir link
-    window.open(whatsappURL, '_blank');
-}
-</script>
 
     <footer class="footer">
         <div class="container">
