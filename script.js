@@ -46,3 +46,30 @@
       });
     });
   });
+
+
+
+  function agendarServico(event, element) {
+    event.preventDefault();
+    
+    // Coletar dados do card
+    const serviceCard = element.closest('.service-card');
+    const serviceName = serviceCard.dataset.serviceName;
+    const servicePrice = serviceCard.dataset.servicePrice;
+    const features = Array.from(serviceCard.querySelectorAll('.service-features li'))
+                         .map(li => li.textContent.trim().replace(/\s+/g, ' '));
+
+    // Montar mensagem
+    let message = `Olá, gostaria de agendar a *${serviceName}* 💦\n`;
+    message += `Valor: *R$ ${servicePrice}*\n\n`;
+    message += `_Serviços inclusos:_\n`;
+    message += features.map(feature => `✓ ${feature}`).join('\n');
+    message += `\n\nPor favor, confirmar disponibilidade. 🕒`;
+
+    // Codificar para URL
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://api.whatsapp.com/send?phone=5515988254615&text=${encodedMessage}`;
+    
+    // Abrir link
+    window.open(whatsappURL, '_blank');
+}
